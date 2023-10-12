@@ -26,6 +26,10 @@ const EmployeesSchema = {
     type: DataTypes.STRING, // Adjust data type as appropriate in your database
     allowNull: false,
   },
+  PHONE: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   SECTOR_ID: {
     type: DataTypes.INTEGER, // Adjust data type as appropriate in your database
     allowNull: false,

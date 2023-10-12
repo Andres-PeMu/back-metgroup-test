@@ -1,35 +1,31 @@
 const { Model, DataTypes, Sequelize } = require('sequelize')
 const { Clients } = require('./clients.model')
 
-const PAYMENTS_TABLE = 'PAYMENTS'
+const CHARGES_TABLE = 'CHARGES'
 
-const PaymentsSchema = {
-  PAYMENT_ID: {
+const ChargesSchema = {
+  CHARGES_ID: {
     allowNull: false,
     autoIncrement: true,
     primaryKey: true,
     type: DataTypes.INTEGER,
-    field: 'PAYMENT_ID',
   },
-  PAYMENT_VALUE: {
+  CHARGES_VALUE: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    field: 'PAYMENT_VALUE',
   },
   CLIENT_ID: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    field: 'CLIENT_ID',
   },
   CREATE_AT: {
     allowNull: false,
     type: DataTypes.DATE,
-    field: 'CREATE_AT',
     defaultValue: Sequelize.fn('now'),
   },
 }
 
-class Payments extends Model {
+class Charges extends Model {
   static associate() {
     this.belongsTo(Clients, {
       as: 'CLIENTS',
@@ -40,11 +36,11 @@ class Payments extends Model {
   static config(sequelize) {
     return {
       sequelize,
-      tableName: PAYMENTS_TABLE,
-      modelName: 'Payments',
+      tableName: CHARGES_TABLE,
+      modelName: 'Charges',
       timestamps: false,
     }
   }
 }
 
-module.exports = { Payments, PaymentsSchema, PAYMENTS_TABLE }
+module.exports = { Charges, ChargesSchema, CHARGES_TABLE }
